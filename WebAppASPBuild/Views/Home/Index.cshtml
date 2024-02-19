@@ -5,21 +5,17 @@
 
 <body>
     <div id="app">
-        @* Side bar*@
         <div id="side-bar">
             <div class="icon"></div>
-
         </div>
-        @*App main*@
+
         <div id="main">
             <div class="status-bar">
-                <p class="status">Metter app for ME96SS - Luong Thanh Tra</p>
+                <p class="status">Metter</p>
             </div>
 
             <div class="title-bar">
-                <p class="title">
-                    Building Management System (BMS) 
-                </p>
+                <p class="title">Building Management System (BMS)</p>
             </div>
             <div class="device-block">
                 <div class="device-name">Metter 1</div>
@@ -136,6 +132,15 @@
                     <div class="chart-display">
                         <div>
                             <canvas id="consumption2-chart"
+                                    style="position: relative; height: 100%; width: 100%"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-block Current2">
+                    <div class="chart-title">Current(A)</div>
+                    <div class="chart-display">
+                        <div>
+                            <canvas id="current2-chart"
                                     style="position: relative; height: 100%; width: 100%"></canvas>
                         </div>
                     </div>
