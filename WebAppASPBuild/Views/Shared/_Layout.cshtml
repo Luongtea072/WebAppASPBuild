@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUEVN - ME96SS Project</title>
+    @Styles.Render("~/Content/Style.css")
+    @Styles.Render("~/Content/reset.css")
+    @Styles.Render("~/Content/bootstrap.min.css")
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/Scripts/script.js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
