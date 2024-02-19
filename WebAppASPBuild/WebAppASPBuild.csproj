@@ -128,7 +128,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MetterDatas1Controller.cs" />
     <Compile Include="Controllers\MetterDatasController.cs" />
     <Compile Include="DAL\MetterDataContext.cs" />
     <Compile Include="DAL\MetterDataInitializer.cs" />
@@ -163,10 +162,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Content Include="Views\MetterDatas\Create.cshtml" />
-    <Content Include="Views\MetterDatas\Delete.cshtml" />
-    <Content Include="Views\MetterDatas\Details.cshtml" />
-    <Content Include="Views\MetterDatas\Edit.cshtml" />
     <Content Include="Views\MetterDatas\Index.cshtml" />
   </ItemGroup>
   <PropertyGroup>
