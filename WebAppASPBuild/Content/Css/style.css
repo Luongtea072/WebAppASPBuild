@@ -1,146 +1,222 @@
 /*=============    UTILS   ================*/
 
 .text-orange {
-  color: #ff872f;
+    color: #ff872f;
 }
 
 .text-yellow {
-  color: #f6ef00;
+    color: #f6ef00;
 }
 
 .text-green {
-  color: #00b842;
+    color: #00b842;
 }
 
 /*=============  COMMON CSS  ===============*/
 
 #app {
-  display: flex;
-  padding: 0;
+    display: flex;
+    /* height: 100%; */
 }
 
 #side-bar {
-  width: 10%;
-  height: 100vh;
-  display: inline-block;
-  padding-left: 10px;
-  padding-right: 10px;
-  background-color: #1d3156;
+    width: 10%;
+    /* height: 100vh; */
+    display: inline-block;
+    background-color: #1d3156;
 }
 
 #main {
-  width: 90%;
-  height: 100vh;
-  display: inline-block;
+    width: 90%;
+    /* height: 100vh; */
+    display: inline-block;
+    margin-left: 10%;
 }
 
 /*=============   MAIN     ================*/
 
 .status-bar {
-  height: 32px;
-  background-color: #4c65ff;
-  color: white;
-  padding-left: 10px;
+    height: 32px;
+    background-color: #4c65ff;
+    color: white;
+    padding-left: 10px;
 }
 
 .title-bar {
-  height: 32px;
-  background-color: #6bb8ff;
+    height: 32px;
+    background-color: #6bb8ff;
 }
 
-.title-bar .title {
-  text-align: center;
-  font-weight: bold;
-  color: #ff6000;
-}
+    .title-bar .title {
+        text-align: center;
+        font-weight: bold;
+        color: #ff6000;
+    }
 
 .device-block {
-  height: 54px;
-  width: 95%;
-  background-color: #fff;
-  margin: 0 auto;
+    height: 54px;
+    width: 95%;
+    background-color: #fff;
+    margin: 0 auto;
 }
 
-.device-block .device-name {
-  line-height: 54px;
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: #000;
-}
-.device-block .update-status {
-  opacity: 0.8;
-}
+    .device-block .device-name {
+        line-height: 54px;
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: #000;
+    }
 
-.device-block::after {
-  content: "";
-  display: block;
-  height: 2px;
-  background-color: #4c65ff;
-  margin: 8px auto;
-}
+    .device-block .update-status {
+        opacity: 0.8;
+    }
+
+    .device-block::after {
+        content: "";
+        display: block;
+        height: 2px;
+        background-color: #4c65ff;
+        margin: 8px auto;
+    }
 
 /*=============   CHART    ================*/
 
 .charts-container {
-  width: 95%;
-  margin: 20px auto;
-  display: flex;
-  flex-wrap: wrap;
+    width: 95%;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .chart-block {
-  width: 24%;
-  height: 180px;
-  padding-left: 4px;
-  box-shadow: 0px 2px 2px 0px #888888;
-  margin: 4px;
+    width: 24%;
+    height: 180px;
+    padding-left: 4px;
+    box-shadow: 0px 2px 2px 0px #888888;
+    margin: 4px;
 }
 
-.chart-block .chart-title {
-  font-weight: bolder;
-  font-size: 1.2rem;
-  text-align: center;
-}
+    .chart-block .chart-title {
+        font-weight: bolder;
+        font-size: 1.2rem;
+        text-align: center;
+    }
 
-.chart-block .wrapper {
-  display: flex;
-}
+    .chart-block .wrapper {
+        display: flex;
+    }
 
-.chart-block .data-block {
-  width: 33.33%;
-}
+    .chart-block .data-block {
+        width: 33.33%;
+    }
 
-.chart-block .data-block .field {
-  font-size: 1.2rem;
-  opacity: 0.8;
-}
+        .chart-block .data-block .field {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
 
-.chart-block .data-block .value {
-  font-size: 1.4rem;
-  font-weight: bold;
-}
+        .chart-block .data-block .value {
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
 .Consumption {
-  width: 49%;
+    width: 49%;
 }
+
 .line {
-  width: 100%;
-  height: 2px;
-  background-color: #4c65ff;
-  margin: 8px auto;
+    width: 100%;
+    height: 2px;
+    background-color: #4c65ff;
+    margin: 8px auto;
 }
+
 .Consumption2 {
-  width: 100%;
-}
-.Current2 {
-  width: 100%;
-}
-#myChart {
-  width: 200px !important;
-  height: 100px !important;
-}
-
-/*============ SIDE BAR ===============*/
-
-.company-logo {
     width: 100%;
 }
+
+.Current2 {
+    width: 100%;
+}
+
+#myChart {
+    width: 200px !important;
+    height: 100px !important;
+}
+
+/*=============   Side bar    ================*/
+#side-bar {
+    color: white;
+    position: fixed;
+    height: 100%;
+    /* border: 3px solid #73ad21; */
+}
+
+    #side-bar .logo-text {
+        text-align: center;
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
+
+    #side-bar .electricity ul {
+        padding-left: 0;
+        text-align: center;
+    }
+
+        #side-bar .electricity ul li {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+    #side-bar .line {
+        width: 90%;
+        height: 1px;
+        background-color: white;
+    }
+
+.icon-text {
+    /* display: flex; */
+    align-items: center;
+    margin: 5px;
+}
+
+    .icon-text i {
+        margin-right: 10px;
+    }
+
+.icon-text-icon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px;
+}
+
+    .icon-text-icon i {
+        margin-right: 5px;
+    }
+/* Nút report */
+.generate-report {
+    /* margin: 0 auto; */
+    /* padding: 20px; */
+    text-align: center; /* Căn giữa nút */
+}
+
+.link-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%; /* Làm tròn nút */
+    background-color: rgba(52, 152, 219, 0.8); /* Màu nền có độ mờ */
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+    .link-button:hover {
+        background-color: rgba(52, 152, 219, 1); /* Màu nền khi hover */
+    }

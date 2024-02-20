@@ -3,10 +3,54 @@
     ViewBag.Title = "Home Page";
 }
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="~/Content/Css/style.css" />
+    <link rel="stylesheet" href="~/Content/Css/reset.css" />
+    <link rel="stylesheet" href="~/Content/Css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/Content/Css/fa-all.min.css" />
+    <title>AUE Analysing System for ME96SS</title>
+</head>
+
 <body>
     <div id="app">
         <div id="side-bar">
-            <div class="icon"></div>
+            <div class="logo-text">ICONICS</div>
+            <div class="electricity">
+                <nav>
+                    <ul>
+                        <p class="icon-text-icon">
+                            <i class="fa-solid fa-bolt"></i>
+                            electricity
+                            <i class="fa-solid fa-chevron-up"></i>
+                        </p>
+                        <li>Meter 1</li>
+                        <li>Meter 2</li>
+                        <li>Meter 3</li>
+                        <li>Meter 4</li>
+                    </ul>
+                    <ul>
+                        <p class="icon-text">
+                            <i class="fa-regular fa-bell"></i>
+                            Notification
+                        </p>
+                    </ul>
+                </nav>
+            </div>
+            <div class="line"></div>
+            <nav class="log-out">
+                <ul>
+                    <p class="icon-text">
+                        <i class="fa-solid fa-power-off"></i> Log out
+                    </p>
+                </ul>
+                <ul>
+                    <p class="icon-text"><i class="fa-solid fa-question"></i> Help</p>
+                </ul>
+            </nav>
         </div>
 
         <div id="main">
@@ -147,6 +191,13 @@
                 </div>
             </div>
         </div>
+        <div class="generate-report">
+            <a href="https://example.com" class="link-button">
+                <i class="fa-solid fa-print"></i>
+            </a>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="~/Scripts/script.js"></script>
 </body>
+</html>

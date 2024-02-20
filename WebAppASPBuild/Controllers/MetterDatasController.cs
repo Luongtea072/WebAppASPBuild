@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using aueProject.DAL;
 using aueProject.Models;
 
 namespace aueProject.Controllers
 {
-    public class MetterDatasController : Controller
+	public class MetterDatasController : Controller
     {
         private MetterDataContext db = new MetterDataContext();
 

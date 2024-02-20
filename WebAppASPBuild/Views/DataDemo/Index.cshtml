@@ -1,0 +1,60 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUEVN - ME96SS Project</title>
+    @Styles.Render("~/Content/Css/Style.css")
+    @Styles.Render("~/Content/Css/reset.css")
+    @Styles.Render("~/Content/Css/bootstrap.min.css")
+</head>
+
+<body>
+    <h2 class="message">This page is using for passing data demo</h2>
+
+    <div class="chart-block">
+        <div class="chart-title">Frequency (Hz)</div>
+        <div class="chart-display">
+            <div>
+                <canvas id="frequency-chart"
+                        style="position: relative; height: 100px; width: 200px"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var x = @Html.Raw(ViewBag.Data);
+
+        ctx = document.querySelector("#frequency-chart");
+        console.log(ctx);
+        new Chart(ctx, {
+            type: "line",
+            data: {
+                labels:x,
+                datasets: [
+                    {
+                        label: "my chart",
+                        data: x,
+                        borderWidth: 1,
+                    },
+                ],
+            },
+            option: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    },
+                },
+                responsive: true,
+            },
+        });
+
+
+    </script>
+
+</body>

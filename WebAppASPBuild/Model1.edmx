@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="METTER_DATA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="U12" Type="float" />
+          <Property Name="U23" Type="float" />
+          <Property Name="U31" Type="float" />
+          <Property Name="I1" Type="float" />
+          <Property Name="I2" Type="float" />
+          <Property Name="I3" Type="float" />
+          <Property Name="P1" Type="float" />
+          <Property Name="P2" Type="float" />
+          <Property Name="P3" Type="float" />
+          <Property Name="FREQUENCY" Type="float" />
+          <Property Name="AVolt" Type="float" />
+          <Property Name="ACurrent" Type="float" />
+          <Property Name="Consumpiton" Type="float" />
+          <Property Name="TimeLog" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="METTER_DATA" EntityType="Self.METTER_DATA" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="METTER_DATA">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="U12" Type="Double" />
+          <Property Name="U23" Type="Double" />
+          <Property Name="U31" Type="Double" />
+          <Property Name="I1" Type="Double" />
+          <Property Name="I2" Type="Double" />
+          <Property Name="I3" Type="Double" />
+          <Property Name="P1" Type="Double" />
+          <Property Name="P2" Type="Double" />
+          <Property Name="P3" Type="Double" />
+          <Property Name="FREQUENCY" Type="Double" />
+          <Property Name="AVolt" Type="Double" />
+          <Property Name="ACurrent" Type="Double" />
+          <Property Name="Consumpiton" Type="Double" />
+          <Property Name="TimeLog" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="METTER_DATA" EntityType="Self.METTER_DATA" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="METTER_DATA">
+            <EntityTypeMapping TypeName="Model.METTER_DATA">
+              <MappingFragment StoreEntitySet="METTER_DATA">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="U12" ColumnName="U12" />
+                <ScalarProperty Name="U23" ColumnName="U23" />
+                <ScalarProperty Name="U31" ColumnName="U31" />
+                <ScalarProperty Name="I1" ColumnName="I1" />
+                <ScalarProperty Name="I2" ColumnName="I2" />
+                <ScalarProperty Name="I3" ColumnName="I3" />
+                <ScalarProperty Name="P1" ColumnName="P1" />
+                <ScalarProperty Name="P2" ColumnName="P2" />
+                <ScalarProperty Name="P3" ColumnName="P3" />
+                <ScalarProperty Name="FREQUENCY" ColumnName="FREQUENCY" />
+                <ScalarProperty Name="AVolt" ColumnName="AVolt" />
+                <ScalarProperty Name="ACurrent" ColumnName="ACurrent" />
+                <ScalarProperty Name="Consumpiton" ColumnName="Consumpiton" />
+                <ScalarProperty Name="TimeLog" ColumnName="TimeLog" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

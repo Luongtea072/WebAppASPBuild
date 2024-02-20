@@ -1,0 +1,129 @@
+﻿@model IEnumerable<aueProject.METTER_DATA>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/Css/page-report-style.css" rel="stylesheet" />
+</head>
+<body>
+    <main id="page-main">
+        <div class="report-header">
+            <img src="~/Content/Images/LogoAue.png" alt="company logo" widh="240px" height="100px" />
+            <h2 class="report-title">Enegy Consumption</h2>
+        </div>
+        <div class="date-report">
+            <div class="from-to-block">
+                <div>From:  </div>
+                <div>To:  </div>
+            </div>
+            <div class="date-time-block">
+                <div class="day-from"> 2/19/2024 12:00:00 AM</div>
+                <div class="day-to"> 2/20/2024 12:00:00 AM</div>
+            </div>
+        </div>
+        <div class="table-container">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.U12)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.U23)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.U31)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.I1)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.I2)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.I3)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.P1)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.P2)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.P3)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FREQUENCY)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AVolt)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ACurrent)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Consumpiton)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TimeLog)
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.U12)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.U23)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.U31)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.I1)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.I2)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.I3)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.P1)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.P2)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.P3)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FREQUENCY)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AVolt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ACurrent)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Consumpiton)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TimeLog)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </main>
+</body>
+</html>
