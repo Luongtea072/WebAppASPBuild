@@ -4,11 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AUEVN - ME96SS Project</title>
+    @Styles.Render("~/Content/Css/bootstrap.min.css");
 </head>
 <body>
     <div>
         @RenderBody()
     </div>
+    @
     @RenderSection("scripts", required: false)
 </body>
 </html>
