@@ -29,9 +29,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         var x = @Html.Raw(ViewBag.Data);
-
+        console.log(x);
         ctx = document.querySelector("#frequency-chart");
-        console.log(ctx);
         new Chart(ctx, {
             type: "line",
             data: {

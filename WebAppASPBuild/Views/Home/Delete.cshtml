@@ -1,0 +1,144 @@
+﻿@model aueProject.METTER_DATA
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>METTER_DATA</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.U12)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.U12)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.U23)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.U23)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.U31)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.U31)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.I1)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.I1)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.I2)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.I2)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.I3)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.I3)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.P1)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.P1)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.P2)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.P2)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.P3)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.P3)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FREQUENCY)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FREQUENCY)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.AVolt)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.AVolt)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ACurrent)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ACurrent)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Consumpiton)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Consumpiton)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TimeLog)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TimeLog)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

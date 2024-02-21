@@ -1,6 +1,7 @@
-﻿@model IEnumerable<aueProject.Models.MetterData>
+﻿@model IEnumerable<aueProject.METTER_DATA>
+
 @{
-    ViewBag.Title = "Home Page";
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -8,9 +9,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="~/Content/Css/style.css" />
+    <link rel="stylesheet" href="~/Content/Css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/Content/Css/reset.css" />
-    <link rel="stylesheet" href="~/Content/Css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/Content/Css/Style.css" />
     <link rel="stylesheet" href="~/Content/Css/fa-all.min.css" />
     <title>AUE Analysing System for ME96SS</title>
 </head>
@@ -77,17 +78,17 @@
                     <div class="wrapper">
                         <div class="data-block">
                             <div class="field">U12</div>
-                            <div class="value text-orange">380.86</div>
+                            <div class="value text-orange" id="data-u12"></div>
                         </div>
 
                         <div class="data-block">
                             <div class="field">U23</div>
-                            <div class="value text-yellow">382.44</div>
+                            <div class="value text-yellow" id="data-u23"></div>
                         </div>
 
                         <div class="data-block">
                             <div class="field">U31</div>
-                            <div class="value text-green">380.99</div>
+                            <div class="value text-green" id="data-u31"></div>
                         </div>
                     </div>
                 </div>
@@ -98,17 +99,17 @@
                     <div class="wrapper">
                         <div class="data-block">
                             <div class="field">I1</div>
-                            <div class="value text-orange">557.64</div>
+                            <div class="value text-orange" id="data-i1" ></div>
                         </div>
 
                         <div class="data-block">
                             <div class="field">I2</div>
-                            <div class="value text-yellow">386.22</div>
+                            <div class="value text-yellow" id="data-i2"></div>
                         </div>
 
                         <div class="data-block">
                             <div class="field">I3</div>
-                            <div class="value text-green">458.44</div>
+                            <div class="value text-green" id="data-i3"></div>
                         </div>
                     </div>
                 </div>
@@ -119,17 +120,17 @@
                     <div class="wrapper">
                         <div class="data-block">
                             <div class="field">P1</div>
-                            <div class="value text-orange">119.39</div>
+                            <div class="value text-orange" id="data-p1"></div>
                         </div>
 
                         <div class="data-block">
                             <div class="field">P2</div>
-                            <div class="value text-yellow">83.82</div>
+                            <div class="value text-yellow" id="data-p2"></div>
                         </div>
 
                         <div class="data-block">
                             <div class="field">P3</div>
-                            <div class="value text-green">96.31</div>
+                            <div class="value text-green" id="data-p3"></div>
                         </div>
                     </div>
                 </div>
@@ -144,7 +145,7 @@
                     </div>
                 </div>
                 <div class="chart-block">
-                    <div class="chart-title">Avarage-volt(v)</div>
+                    <div class="chart-title">Average-volt(v)</div>
                     <div class="chart-display">
                         <div>
                             <canvas id="voltage-chart"
@@ -153,7 +154,7 @@
                     </div>
                 </div>
                 <div class="chart-block">
-                    <div class="chart-title">Avarage-current(a)</div>
+                    <div class="chart-title">Average-current(a)</div>
                     <div class="chart-display">
                         <div>
                             <canvas id="current-chart"
@@ -192,12 +193,279 @@
             </div>
         </div>
         <div class="generate-report">
-            <a href="https://example.com" class="link-button">
+            <a href="@Url.Action("Index", "METTER_DATA")" class="link-button">
                 <i class="fa-solid fa-print"></i>
             </a>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="~/Scripts/script.js"></script>
+    <script src="~/Scripts/Script.js"></script>
+
+@*========================================= SCRIPT BELOW ================================================*@
+
+    <script>
+        /*================ DATA FETCHING ========================*/
+
+
+        const x = @Html.Raw(ViewBag.Data);
+
+        /*================ UTILS VARIABLE ========================*/
+
+        const labels = [];
+
+        const labelRange = 20;
+
+        for (let i = 0; i < labelRange; i++) {
+            labels[i] = i.toString();
+        }
+
+        let frequencyArray = [];
+        let AvoltageArray = [];
+        let ACurrentArray = [];
+        let ConsumptionArray = [];
+
+        let p1Array = [];
+        let p2Array = [];
+        let p3Array = [];
+
+        /*================ DATA FROM JSON ========================*/
+
+        for (let i = 0; i < 20; i++) {
+            frequencyArray[i]   =   x[i]["FREQUENCY"];
+            AvoltageArray[i]    =   x[i]["AVolt"];
+            ACurrentArray[i]    =   x[i]["ACurrent"];
+            ConsumptionArray[i] =   x[i]["Consumpiton"];
+
+            p1Array[i] = x[i]["P1"];
+            p2Array[i] = x[i]["P2"];
+            p3Array[i] = x[i]["P3"];
+        }
+
+        /*================ DATA RENDERING ========================*/
+
+        const newestNode = x.length - 1;
+
+        const u12 = x[newestNode]["U12"];
+        const u23 = x[newestNode]["U23"];
+        const u31 = x[newestNode]["U31"];
+
+        const i1 = x[newestNode]["I1"];
+        const i2 = x[newestNode]["I2"];
+        const i3 = x[newestNode]["I3"];
+
+        const p1 = x[newestNode]["P1"];
+        const p2 = x[newestNode]["P2"];
+        const p3 = x[newestNode]["P3"];
+
+        let u12Element = document.querySelector("#data-u12");
+        u12Element.textContent = u12;
+
+        let u23Element = document.querySelector("#data-u23");
+        u23Element.textContent = u23;
+
+        let u31Element = document.querySelector("#data-u31");
+        u31Element.textContent = u31;
+
+        let i1Element = document.querySelector("#data-i1");
+        i1Element.textContent = i1;
+
+        let i2Element = document.querySelector("#data-i2");
+        i2Element.textContent = i2;
+
+        let i3Element = document.querySelector("#data-i3");
+        i3Element.textContent = i3;
+
+
+        let p1Element = document.querySelector("#data-p1");
+        p1Element.textContent = p1;
+
+        let p2Element = document.querySelector("#data-p2");
+        p2Element.textContent = p2;
+
+        let p3Element = document.querySelector("#data-p3");
+        p3Element.textContent = p3;
+
+
+
+        /*================ CHART RENDERING ========================*/
+
+        ctx = document.querySelector("#frequency-chart");
+        new Chart(ctx, {
+            type: "line",
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: "Frequency",
+                        data: frequencyArray,
+                        borderWidth: 1,
+                    },
+                ],
+            },
+            option: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    },
+                },
+                responsive: true,
+            },
+        });
+
+
+        ctb = document.querySelector("#voltage-chart");
+        new Chart(ctb, {
+            type: "line",
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: "Voltage",
+                        data: AvoltageArray,
+                        borderWidth: 1,
+                    },
+                ],
+            },
+            option: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    },
+                },
+                responsive: true,
+            },
+        });
+        cta = document.querySelector("#current-chart");
+        new Chart(cta, {
+            type: "line",
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: "Current",
+                        data: ACurrentArray,
+                        borderWidth: 1,
+                    },
+                ],
+            },
+            option: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    },
+                },
+                legend: {
+                    display: false,
+                },
+                responsive: true,
+            },
+        });
+        cta = document.querySelector("#consumption-chart");
+        new Chart(cta, {
+            type: "bar",
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: "Consumption",
+                        data: ConsumptionArray,
+                        borderWidth: 1,
+                    },
+                ],
+            },
+            option: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                    },
+                },
+
+                responsive: true,
+            },
+        });
+        cta = document.querySelector("#consumption2-chart");
+        new Chart(cta, {
+            type: "bar",
+            data: {
+                labels: [
+                    "01:00",
+                    "02:00",
+                    "03:00",
+                    "04:00",
+                    "05:00",
+                    "05:00",
+                    "07:00",
+                    "08:00",
+                    "09:00",
+                    "10:00",
+                    "11:00",
+                    "12:00",
+                    "13:00",
+                    "14:00",
+                    "15:00",
+                ],
+                datasets: [
+                    {
+                        label: "consumption2",
+                        data: [160, 165, 160, 180, 340, 341, 343, 350, 347, 330, 0, 0, 0, 0, 0],
+                        borderWidth: 1,
+                    },
+                ],
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: 1, // Đặt giá trị bắt đầu từ 0 hoặc true nếu muốn bắt đầu từ 0
+                    },
+                },
+                responsive: true,
+            },
+        });
+        cta = document.querySelector("#current2-chart");
+        new Chart(cta, {
+            type: "line",
+            data: {
+                labels: [
+                    "01:00",
+                    "02:00",
+                    "03:00",
+                    "04:00",
+                    "05:00",
+                    "06:00",
+                    "07:00",
+                    "08:00",
+                    "09:00",
+                    "10:00",
+
+                ],
+                datasets: [
+                    {
+                        label: "p1",
+                        data: p1Array,
+                        borderWidth: 1,
+                    },
+                    {
+                        label: "p2",
+                        data: p2Array,
+                        borderWidth: 1,
+                    },
+                    {
+                        label: "p3",
+                        data: p3Array,
+                        borderWidth: 1,
+                    },
+                ],
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: 1, // Đặt giá trị bắt đầu từ 0 hoặc true nếu muốn bắt đầu từ 0
+                    },
+                },
+                responsive: true,
+            },
+        });
+        Chart.resize(100, 200);
+    </script>
 </body>
 </html>
