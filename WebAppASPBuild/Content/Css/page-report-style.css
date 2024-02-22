@@ -22,14 +22,29 @@
     color: #4472c4;
 }
 
+.btn-save-pdf {
+    position: fixed;
+    font-size: 3rem;
+    top: 88vh;
+    left: 95%;
+    border: none;
+    background-color: white;
+    color: #4472c4;
+    opacity: .6;
+}
+    .btn-save-pdf:hover {
+        opacity: 1;
+    }
 
 table, th, td {
     padding: 5px;
 }
 
 th {
-    background-color: #4472c4;
-    color: white;
+    background-color: #4472c4 !important;
+    color: white !important;
+    text-align: center !important;
+    font-weight: bold !important;
 }
 
 td {

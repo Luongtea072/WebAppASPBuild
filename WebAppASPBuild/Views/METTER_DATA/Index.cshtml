@@ -10,9 +10,16 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
-    <link href="~/Content/Css/page-report-style.css" rel="stylesheet" />
+    @Styles.Render("~/Content/Css/page-report-style.css")
+    @Styles.Render("~/Content/Css/reset.css")
+    @Styles.Render("~/Content/Css/Style.css")
+    @Styles.Render("~/Content/Css/bootstrap.min.css")
+    @Styles.Render("~/Content/Css/fa-all.min.css")
 </head>
 <body>
+    <button class="btn-save-pdf" title="Save report as PDF" >
+        <i class="fa-regular fa-floppy-disk"></i>
+    </button>
     <main id="page-main">
         <div class="report-header">
             <a href="@Url.Action("Index", "Home")">
@@ -30,7 +37,6 @@
                 <div class="day-to"> 2/20/2024 12:00:00 AM</div>
             </div>
         </div>
-        <button class="btn-export-pdf">Export as pdf</button>
         <div class="table-container">
             <table class="table">
                 <tr>
@@ -136,17 +142,17 @@
         window.html2canvas = html2canvas;
         const doc = new jsPDF();
         let pdfjs = document.querySelector("#page-main");
-        let makePDF = document.querySelector(".btn-export-pdf");
+        let makePDF = document.querySelector(".btn-save-pdf");
 
         makePDF.onclick = function () {
             doc.html(pdfjs, {
                 callback: function (doc) {
                     doc.save("newpdf.pdf");
                 },
-                x: 15,
-                y: 15,
-                width: 170,
-                windowWidth: 650
+                x: 1,
+                y: 1,
+                width: 200,
+                windowWidth: 1100
             });
             console.log("pdf saved");
         }

@@ -1,15 +1,15 @@
 /*=============    UTILS   ================*/
 
 .text-orange {
-    color: #ff872f;
+    color: #6bb8ff;
 }
 
 .text-yellow {
-    color: #f6ef00;
+    color: #f6007f;
 }
 
 .text-green {
-    color: #00b842;
+    color: #ff6000;
 }
 
 /*=============  COMMON CSS  ===============*/
@@ -86,11 +86,11 @@
     margin: 20px auto;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .chart-block {
     width: 24%;
-    height: 180px;
     padding-left: 4px;
     box-shadow: 0px 2px 2px 0px #888888;
     margin: 4px;
@@ -102,21 +102,30 @@
         text-align: center;
     }
 
+    .chart-block .field, .value {
+        text-align: center;
+    }
     .chart-block .wrapper {
         display: flex;
+    }
+    .chart-block .span-center {
+        display: inline;
     }
 
     .chart-block .data-block {
         width: 33.33%;
     }
+    .chart-block .data-block-large {
+        width: 100%;
+    }
 
-        .chart-block .data-block .field {
+        .chart-block .field {
             font-size: 1.2rem;
             opacity: 0.8;
         }
 
-        .chart-block .data-block .value {
-            font-size: 1.4rem;
+        .chart-block .value {
+            font-size: 1.4rem;  
             font-weight: bold;
         }
 
@@ -124,11 +133,18 @@
     width: 49%;
 }
 
-.line {
+.line-blue {
     width: 100%;
     height: 2px;
-    background-color: #4c65ff;
-    margin: 8px auto;
+    background-color: #6bb8ff;
+    margin: .5rem auto;
+}
+
+.line-orange {
+    width: 100%;
+    height: 2px;
+    background-color: #ff6000;
+    margin: .5rem auto;
 }
 
 .Consumption2 {
