@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<aueProject.METTER_DATA>
-
 @{
     Layout = null;
 }
@@ -17,27 +16,26 @@
     @Styles.Render("~/Content/Css/fa-all.min.css")
 </head>
 <body>
-    <button class="btn-save-pdf" title="Save report as PDF" >
-        <i class="fa-regular fa-floppy-disk"></i>
-    </button>
     <main id="page-main">
         <div class="report-header">
             <a href="@Url.Action("Index", "Home")">
-                <img src="~/Content/Images/LogoAue.png" alt="company logo" widh="240px" height="100px" />
+                <img src="~/Content/Images/LogoAue.png" alt="company logo" height="100px" width="240px" />
             </a>
             <h2 class="report-title">Energy Consumption</h2>
         </div>
+
         <div class="date-report">
-            <div class="from-to-block">
-                <div>From:  </div>
-                <div>To:  </div>
-            </div>
-            <div class="date-time-block">
-                <div class="day-from"> 2/19/2024 12:00:00 AM</div>
-                <div class="day-to"> 2/20/2024 12:00:00 AM</div>
-            </div>
-        </div>
-        <div class="table-container">
+                <div class="from-to-block">
+                    <div>From:  </div>
+                    <div>To:  </div>
+                </div>
+                <div class="date-time-block">
+                    <div class="day-from"> @ViewBag.StartDate</div>
+                    <div class="day-to"> @ViewBag.EndDate</div>
+                </div>
+        </div> 
+        <div class="btn-make-pdf btn btn-success">Export as PDF</div>
+        <div class="table-container">    
             <table class="table">
                 <tr>
                     <th>
@@ -136,15 +134,18 @@
     </main>
     <script type="text/javascript" src="~/Scripts/jspdf.umd.min.js"></script>
     <script type="text/javascript" src="~/Scripts/html2canvas.min.js"></script>
+
     <script>
 
         const { jsPDF } = window.jspdf;
         window.html2canvas = html2canvas;
         const doc = new jsPDF();
-        let pdfjs = document.querySelector("#page-main");
-        let makePDF = document.querySelector(".btn-save-pdf");
 
-        makePDF.onclick = function () {
+        let pdfjs = document.querySelector("#page-main");
+        let buttonMakePDF = document.querySelector(".btn-make-pdf");
+
+        buttonMakePDF.onclick = function () {
+            buttonMakePDF.style.opacity = 0;
             doc.html(pdfjs, {
                 callback: function (doc) {
                     doc.save("newpdf.pdf");
@@ -154,7 +155,7 @@
                 width: 200,
                 windowWidth: 1100
             });
-            console.log("pdf saved");
+            alert("The report is saved!")
         }
     </script>
 </body>

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using aueProject.Models;
+using System.Linq;
 using System.Web.Mvc;
 
 namespace aueProject.Controllers
@@ -8,10 +9,14 @@ namespace aueProject.Controllers
         private Entities db = new Entities();
 
         // GET: METTER_DATA
-        public ActionResult Index()
+        public ActionResult Index(DataQuery dtq)
         {
-
-			return View(db.METTER_DATA.ToList());
+            var query = (string)Session["SQL"];
+            var StartDate = (string)Session["StartDate"];
+            var EndDate = (string)Session["EndDate"];
+            ViewBag.StartDate = StartDate;
+            ViewBag.EndDate = EndDate;
+			return  View(db.METTER_DATA.SqlQuery(query).ToList());
         }
         protected override void Dispose(bool disposing)
         {

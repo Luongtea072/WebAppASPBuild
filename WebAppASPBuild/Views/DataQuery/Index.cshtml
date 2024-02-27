@@ -1,0 +1,66 @@
+﻿@model aueProject.Models.DataQuery
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/Css/page-report-style.css" rel="stylesheet" />
+    @Styles.Render("~/Content/Css/page-report-style.css")
+    @Styles.Render("~/Content/Css/reset.css")
+    @Styles.Render("~/Content/Css/Style.css")
+    @Styles.Render("~/Content/Css/bootstrap.min.css")
+    @Styles.Render("~/Content/Css/fa-all.min.css")
+</head>
+<body>
+
+    @using (Html.BeginForm("Index", "DataQuery", FormMethod.Post))
+    {
+        <div class="datepicker">
+            <h5 style="text-transform:uppercase; text-align: center">Select range of time</h5>
+            <form method="Post">
+                <div class="form-group">
+                    <label for="" style="font-weight: bold" >Start at:</label>
+                    <span class="font-weight-bold text-primary" id="StartDateValue" >@Html.ValueFor(model => model.StartDateVerified)</span> 
+                    <input id="st-in" type="datetime-local" name="StartDate" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="" style="font-weight: bold">End at:</label>
+                    <span class="font-weight-bold text-primary" id="EndDateValue">@Html.ValueFor(model => model.EndDateVerified)</span>  
+                    <input id="ed-in" type="datetime-local" name="EndDate" class="form-control" required>
+                </div>
+                <div class="button-group">
+                    <a href="@Url.Action("Index", "Home")" class="btn btn-warning">
+                        Home
+                    </a>
+                    <button type="submit" class="btn btn-success" id="btn-submit">Save</button>
+                    <a href="@Url.Action("Index", "METTER_DATA")" id="btn-to-report" class="btn btn-primary">View report</a>
+
+                </div>
+            </form>
+        </div>
+    }
+    <p id="query-statement" style="display:none"> @Html.ValueFor(model => model.QueryStatement)</p>
+    <script>
+        var StartDate = document.querySelector("#StartDateValue").innerHTML;
+        var EndDate = document.querySelector("#EndDateValue").innerHTML;
+        var buttonToReport = document.querySelector("#btn-to-report");
+        var saveButton = document.querySelector("#btn-submit");
+        var queryStatement = document.querySelector("#query-statement").innerHTML;
+
+        var stIn = document.querySelector("#st-in");
+        var edIn = document.querySelector("#ed-in");
+
+        if (StartDate.length > 10 && EndDate.length > 10) {
+            buttonToReport.style.display = "inline-block";
+            saveButton.style.display = "none";
+        }
+        else {
+            buttonToReport.style.display = "none";
+        }
+    </script>
+</body>
+</html>
