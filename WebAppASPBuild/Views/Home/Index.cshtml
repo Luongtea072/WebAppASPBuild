@@ -66,7 +66,7 @@
                 <div class="device-name">Metter 1</div>
                 <div class="update-status">
                     Update Time:
-                    <span class="updated-date-time">1/30/2024 03:45 PM</span>
+                    <span class="updated-date-time"></span>
                 </div>
             </div>
             <br />
@@ -178,7 +178,7 @@
                 </div>
             </div>
                 <div class="chart-block">
-                    <div class="chart-title">Average-volt(v)</div>
+                    <div class="chart-title">Average-volt(V)</div>
                     <div class="chart-display">
                         <div>
                             <canvas id="voltage-chart"
@@ -187,7 +187,7 @@
                     </div>
                 </div>
                 <div class="chart-block">
-                    <div class="chart-title">Average-current(a)</div>
+                    <div class="chart-title">Average-current(A)</div>
                     <div class="chart-display">
                         <div>
                             <canvas id="current-chart"
@@ -238,10 +238,17 @@
 @*========================================= SCRIPT BELOW ================================================*@
 
     <script>
+
+        /*==================== UPDATE DATE TIME =================*/
+
+        let dateTimeView = document.querySelector(".updated-date-time");
+        dateTimeView.textContent = new Date().toLocaleString();
+
         /*================ DATA FETCHING ========================*/
 
 
         const x = @Html.Raw(ViewBag.Data);
+        const consumptionPerHour = @Html.Raw(ViewBag.ConsumptionPerHour);
 
         /*================ UTILS VARIABLE ========================*/
 
@@ -256,11 +263,15 @@
         for (let i = 0; i < labelRange; i++) {
             labels[i] = i.toString();
         }
+        const dayHours = ["00:00", "01:00","02:00","03:00","04:00","05:00","05:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00", "17:00", "18:00","19:00", "20:00","21:00","22:00","23:00"];
 
+        
+        
         let frequencyArray = [];
         let AvoltageArray = [];
         let ACurrentArray = [];
         let ConsumptionArray = [];
+        let ConsumptionPerHourArray = [24];
 
         let p1Array = [];
         let p2Array = [];
@@ -294,6 +305,15 @@
             u23Array[i] = x[dataLength - sampleSize + i]["U23"];
             u31Array[i] = x[dataLength - sampleSize + i]["U31"];
         }
+ 
+        for (let i = 0; i < 23; i++) {
+            if (consumptionPerHour[i + 1] != 0) {
+                ConsumptionPerHourArray[i] = consumptionPerHour[i + 1] - consumptionPerHour[i];
+            }   
+        }
+        /*=============== TEST SOME FUNCTION =====================*/
+
+
 
         /*================ DATA RENDERING ========================*/
 
@@ -446,27 +466,11 @@
         new Chart(cta, {
             type: "bar",
             data: {
-                labels: [
-                    "01:00",
-                    "02:00",
-                    "03:00",
-                    "04:00",
-                    "05:00",
-                    "05:00",
-                    "07:00",
-                    "08:00",
-                    "09:00",
-                    "10:00",
-                    "11:00",
-                    "12:00",
-                    "13:00",
-                    "14:00",
-                    "15:00",
-                ],
+                labels: dayHours,
                 datasets: [
                     {
-                        label: "consumption2",
-                        data: [160, 165, 160, 180, 340, 341, 343, 350, 347, 330, 0, 0, 0, 0, 0],
+                        label: "Consumption (Per hour)",
+                        data: ConsumptionPerHourArray,
                         borderWidth: 1,
                     },
                 ],
@@ -474,7 +478,7 @@
             options: {
                 scales: {
                     y: {
-                        beginAtZero: 1, // Đặt giá trị bắt đầu từ 0 hoặc true nếu muốn bắt đầu từ 0
+                        beginAtZero: 1,
                     },
                 },
                 responsive: true,

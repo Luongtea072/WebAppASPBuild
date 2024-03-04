@@ -139,7 +139,9 @@
 
         const { jsPDF } = window.jspdf;
         window.html2canvas = html2canvas;
-        const doc = new jsPDF();
+        const doc = new jsPDF({
+            orientation: "landscape",
+        });
 
         let pdfjs = document.querySelector("#page-main");
         let buttonMakePDF = document.querySelector(".btn-make-pdf");
@@ -152,8 +154,8 @@
                 },
                 x: 1,
                 y: 1,
-                width: 200,
-                windowWidth: 1100
+                width: 300,
+                windowWidth: 1500
             });
             alert("The report is saved!")
         }

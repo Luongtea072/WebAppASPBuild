@@ -161,10 +161,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Css\bootstrap.min.css" />
+    <Content Include="Content\Css\data-query-page.css" />
     <Content Include="Content\Css\fa-all.min.css" />
     <Content Include="Content\Css\page-report-style.css" />
     <Content Include="Content\Css\reset.css" />
     <Content Include="Content\Css\Style.css" />
+    <Content Include="Content\Images\background.png" />
+    <Content Include="Content\Images\LogoAue.png" />
     <Content Include="Content\svgs\brands\42-group.svg" />
     <Content Include="Content\svgs\brands\500px.svg" />
     <Content Include="Content\svgs\brands\accessible-icon.svg" />
@@ -2234,7 +2237,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Images\" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Model1.edmx">
